@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 
-const ExamplePage = React.lazy(async () => import('pages/@example/ExamplePage'));
+const Dashboard = React.lazy(async () => import('pages/dashboard'));
+const Login = React.lazy(async () => import('pages/auth/login'));
 
 export default function Routes() {
   return useRoutes([
@@ -9,7 +10,15 @@ export default function Routes() {
       path: '/',
       element: (
         <SuspenseComponent>
-          <ExamplePage />
+          <Dashboard />
+        </SuspenseComponent>
+      ),
+    },
+    {
+      path: '/login',
+      element: (
+        <SuspenseComponent>
+          <Login />
         </SuspenseComponent>
       ),
     },
